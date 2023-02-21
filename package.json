@@ -1,0 +1,29 @@
+{
+  "name": "bel-clothing",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "resolve": "npx npm-force-resolutions"
+  },
+  "resolutions": {
+    "scss-tokenizer": "0.4.3"
+  },
+  "dependencies": {
+    "node-sass": "^7.0.3",
+    "npm-force-resolutions": "^0.0.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.54.8",
+    "scss-tokenizer": "^0.4.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.0.1",
+    "vite": "^3.0.7"
+  }
+}
