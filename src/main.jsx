@@ -6,14 +6,7 @@ import {
 
 import App from './App'
 import './index.css'
-
-const Hats = () => {
-  return (
-    <div>
-      Hats
-    </div>
-  )
-}
+import ShopPage from './pages/shop/shop.component';
 
 const router = createBrowserRouter([
   {
@@ -23,8 +16,8 @@ const router = createBrowserRouter([
   },
   {
     exact: true,
-    path: "/shop/hats",
-    element: <Hats />,
+    path: "/shop",
+    element: <ShopPage/>,
   }
 ])
 
