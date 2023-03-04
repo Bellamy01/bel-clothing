@@ -5,6 +5,7 @@ import HomePage from './pages/homepage/homepage.component'
 import ShopPage from './pages/shop/shop.component'
 import './App.css';
 import Layout from './pages/layout/layout.component';
+import SignInPage from './pages/sign-in/sign-in-page.component';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/shop" element={<ShopPage />} />
+          <Route path='/signin' element={<SignInPage/>} />
         </Routes>
         </Layout>
     </BrowserRouter>
