@@ -2,11 +2,11 @@ import React from "react";
 
 import Header from "../../components/header/header.component";
 
-const Layout = ({children}) => {
+const Layout = ({ currentUser, children }) => {
     return (
         <>
             <header>
-                <Header/>
+                <Header currentUser={currentUser}/>
             </header>
             <main>{children}</main>
         </>
