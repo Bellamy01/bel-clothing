@@ -1,5 +1,6 @@
 import  { initializeApp } from 'firebase/app';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
+import { doc, collection } from 'firebase/firestore';
 
 const config = {
     apiKey: "AIzaSyCkv07LhofqMv3inSjlzl8PLBBe5xh8cAk",
@@ -10,6 +11,12 @@ const config = {
     appId: "1:673727886285:web:e175bad16e673a39020a84",
     measurementId: "G-65WYCQL8FR"
 };
+//create user profile
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+    if(!userAuth) return;
+
+    console.log(doc('users/f140914'));
+} 
 
 const app = initializeApp(config);
 
@@ -24,7 +31,6 @@ provider.setCustomParameters({
 });
 
 //sign in with popup
-
 export const signInWithGoogle = () => {
     signInWithPopup(auth, provider)
     }

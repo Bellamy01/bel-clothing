@@ -6,7 +6,7 @@ import ShopPage from './pages/shop/shop.component'
 import './App.css';
 import Layout from './pages/layout/layout.component';
 import SignInPage from './pages/sign-in/sign-in-page.component';
-import { auth } from './firebase/firebase.utils';
+import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 class App extends React.Component {
   constructor(){
@@ -21,7 +21,8 @@ class App extends React.Component {
 
   componentDidMount() {
     this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({currentUser: user});
+      createUserProfileDocument();
+
       console.log(user);
     });
   }
