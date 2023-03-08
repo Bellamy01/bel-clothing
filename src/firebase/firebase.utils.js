@@ -15,7 +15,9 @@ const config = {
 export const createUserProfileDocument = async (userAuth, additionalData) => {
     if(!userAuth) return;
 
-    console.log(doc('users/f140914'));
+    const userRef = doc('users/f140914');
+    const snapShot = await userRef.get(); 
+    console.log();
 } 
 
 const app = initializeApp(config);
