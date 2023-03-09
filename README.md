@@ -1,9 +1,9 @@
-#Bel-clothing E-commerce Platform
+Bel-clothing E-commerce Platform
 ================================
 
 Bel-clothing is an e-commerce platform built with React for clothing and apparel stores. This platform provides a user-friendly interface for customers to browse and purchase products, and for store owners to manage their inventory and sales.
 
-#Features
+Features
 --------
 
 -   Responsive design for desktop and mobile devices
@@ -14,7 +14,7 @@ Bel-clothing is an e-commerce platform built with React for clothing and apparel
 -   Order tracking and history
 -   Admin dashboard for managing products, orders, and customers
 
-#Installation
+Installation
 ------------
 
 To install the Bel-clothing platform, follow these steps:
@@ -24,7 +24,7 @@ To install the Bel-clothing platform, follow these steps:
 3.  Install the necessary dependencies using `npm install`.
 4.  Start the development server using `npm start`.
 
-#Dependencies
+Dependencies
 ------------
 
 The Bel-clothing platform requires the following dependencies:
@@ -36,7 +36,7 @@ The Bel-clothing platform requires the following dependencies:
 -   Express.js
 -   MongoDB
 
-#Usage
+Usage
 -----
 
 Once the development server is running, you can access the platform by navigating to `http://localhost:3000` in your web browser.
@@ -57,7 +57,7 @@ During checkout, users can select a shipping method and enter their payment info
 
 Admin users can access the dashboard by navigating to `http://localhost:3000/admin` and logging in. The dashboard provides a view of all products, orders, and customers. Admins can add, edit, and delete products, view and edit orders, and view customer information.
 
-#Contributing
+Contributing
 ------------
 
 Contributions to the Bel-clothing platform are welcome and encouraged! To contribute, follow these steps:
@@ -68,7 +68,7 @@ Contributions to the Bel-clothing platform are welcome and encouraged! To contri
 4.  Push your changes to your fork using `git push origin your-branch-name`.
 5.  Submit a pull request to the main repository.
 
-#License
+License
 -------
 
 The Bel-clothing platform is licensed under the MIT License. See the `LICENSE` file for more information.
