@@ -1,6 +1,6 @@
 import  { initializeApp } from 'firebase/app';
 import { GoogleAuthProvider, getAuth, signInWithRedirect } from 'firebase/auth';
-import { addDoc, collection, getFirestore, doc, query, where, getDocs } from 'firebase/firestore';
+import { addDoc, collection, getFirestore, query, where, getDocs } from 'firebase/firestore';
 
 const config = {
     apiKey: "AIzaSyCkv07LhofqMv3inSjlzl8PLBBe5xh8cAk",
@@ -19,7 +19,6 @@ const db = getFirestore(app);
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
     if(!userAuth) return;
-    console.log(userAuth);
     const userRef = collection(db, "users");
     const userQuery = query(userRef,where("email","==",userAuth.email));
     const snapShot = await getDocs(userQuery);
@@ -35,11 +34,11 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
                     ...additionalData
                 });
                 console.log("Document written with ID: ", docRef.id);
-                return docRef;
             } catch (e) {
                 console.error("Error adding document: ", e);
             }
     };
+    return snapShot;
     
 }
 
