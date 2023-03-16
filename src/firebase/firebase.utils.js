@@ -1,6 +1,6 @@
 import  { initializeApp } from 'firebase/app';
-import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
-import { addDoc, collection, getDocs, getFirestore, where, query, doc } from 'firebase/firestore';
+import { GoogleAuthProvider, getAuth, signInWithRedirect } from 'firebase/auth';
+import { addDoc, collection, getFirestore, doc, query, where, getDocs } from 'firebase/firestore';
 
 const config = {
     apiKey: "AIzaSyCkv07LhofqMv3inSjlzl8PLBBe5xh8cAk",
@@ -14,30 +14,31 @@ const config = {
 //initialize firebase
 const app = initializeApp(config);
 
-//initialize firestore
+//initialize firestore 
 const db = getFirestore(app);
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
     if(!userAuth) return;
-
-    const userQuery = query(collection(db,"users"),where("email","==",userAuth.email));
+    console.log(userAuth);
+    const userRef = collection(db, "users");
+    const userQuery = query(userRef,where("email","==",userAuth.email));
     const snapShot = await getDocs(userQuery);
 
         if (snapShot.empty) {
             const createdAt = new Date();
             const { displayName, email } = userAuth;
             try {
-                const docRef = await addDoc(doc(collection(db, "users")), {
+                const docRef = await addDoc(userRef, {
                     displayName,
                     email,
                     createdAt,
                     ...additionalData
                 });
                 console.log("Document written with ID: ", docRef.id);
+                return docRef;
             } catch (e) {
                 console.error("Error adding document: ", e);
             }
-        return docRef;
     };
     
 }
@@ -52,8 +53,9 @@ provider.setCustomParameters({
     'prompt' : 'select_account'
 });
 
-//sign in with popup
+//sign in with redirect
 export const signInWithGoogle = () => {
-    signInWithPopup(auth, provider);
-    }
+    signInWithRedirect(auth, provider);
+}
+
 export default app;
