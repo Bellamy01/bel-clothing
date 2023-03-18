@@ -5,6 +5,8 @@ import FormInput from "../form-input/form-input.component";
 import { signInWithGoogle } from "../../firebase/firebase.utils";
 
 import './sign-in.styles.scss';
+import { Link } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 class SignIn extends React.Component{
     constructor(props){
@@ -16,10 +18,18 @@ class SignIn extends React.Component{
         }
     }
 
-    handleSubmit = event => {
+    handleSubmit = async event => {
         event.preventDefault();
 
-        this.setState({ email: '', password: '' })
+        const { email, password } = this.state;
+        try {
+            await signInWithEmailAndPassword(email, password);
+            this.setState({ email: '', password: '' })
+        }
+        catch (e) {
+            console.error("Error signing in user ", e);
+        }
+
     }
 
     handleChange = event => {
@@ -28,6 +38,7 @@ class SignIn extends React.Component{
     }
 
     render() {
+        const { email, password } = this.state;
         return(
             <div className="sign-in">
                 <h2>I already have an account</h2>
@@ -38,7 +49,7 @@ class SignIn extends React.Component{
                         name='email'
                         type='email' 
                         handleChange={this.handleChange} 
-                        value={this.state.email}
+                        value={email}
                         label='Email'
                         required 
                     />
@@ -47,7 +58,7 @@ class SignIn extends React.Component{
                         name='password'
                         type='password' 
                         handleChange= {this.handleChange}
-                        value={this.state.password} 
+                        value={password} 
                         label='Password'
                         required 
                     />
@@ -57,6 +68,11 @@ class SignIn extends React.Component{
                         <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
                             Sign in with Google
                         </CustomButton>
+                   </div>
+                   <div className="sign-up">
+                    <span>Don't have an account!
+                    <Link className="link-sign" to='/signup'>Sign up</Link>
+                    </span>
                    </div>
                 </form>
             </div>

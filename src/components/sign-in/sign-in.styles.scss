@@ -1,12 +1,23 @@
 .sign-in {
+    align-self: center;
+    width: 28vw;
    .title{
         margin: 10px 0;
     }
-
-    .buttons{
+    .buttons {
         display: flex;
-        flex-direction: row;
         width: 28vw;
+        flex-direction: row;
         justify-content:space-between;
+    }
+    .sign-up {
+        margin: 30px 0;
+    }
+    .link-sign {
+        text-decoration: underline;
+        font-size: medium;
+        font-weight: 800;
+        color:#435673;
+        padding-left: 5px;
     }
 }
