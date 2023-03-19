@@ -1,6 +1,6 @@
 import  { initializeApp } from 'firebase/app';
-import { GoogleAuthProvider, getAuth, signInWithRedirect } from 'firebase/auth';
-import { addDoc, collection, getFirestore, query, where, getDocs } from 'firebase/firestore';
+import { GoogleAuthProvider, getAuth, signInWithRedirect, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { addDoc, collection, getFirestore, query, where, getDocs, doc, setDoc } from 'firebase/firestore';
 
 const config = {
     apiKey: "AIzaSyCkv07LhofqMv3inSjlzl8PLBBe5xh8cAk",
@@ -41,7 +41,24 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     return snapShot;
     
 }
+export const signInWithEmail = async (auth, email, password, displayName) => {
+    try {
+        const { user } = await createUserWithEmailAndPassword(auth, email, password);
+        console.log("Successfully created user:", user.email);
 
+        const userRef = doc(db, "users", user.uid);
+        // Save the user's display name in Firestore
+        await setDoc(userRef, {
+            displayName,
+        }, { merge: true });
+        console.log("Saved user's display name in Firestore:", displayName);
+
+        const { user: signedInUser } = await signInWithEmailAndPassword(auth, email, password);
+        console.log("Successfully signed in user:", signedInUser.email);
+    } catch (error) {
+        console.error("Error signing in with email and password:", error);
+    }
+};
 //preferred language
 export const auth = getAuth();
 auth.languageCode = 'it';
