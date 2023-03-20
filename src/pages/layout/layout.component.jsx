@@ -8,7 +8,7 @@ const Layout = ({ currentUser, children }) => {
             <header>
                 <Header currentUser={currentUser}/>
             </header>
-            <main>{children}</main>
+            <div>{children}</div>
         </>
     )
 }
