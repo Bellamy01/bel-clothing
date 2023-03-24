@@ -1,0 +1,11 @@
+.sign-up {
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 26vw;
+
+    .title {
+        margin: 10px 0;
+    }
+}
