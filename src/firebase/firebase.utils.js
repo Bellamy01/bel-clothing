@@ -44,17 +44,17 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 export const signInWithEmail = async (auth, email, password, displayName) => {
     try {
         const { user } = await createUserWithEmailAndPassword(auth, email, password);
-        console.log("Successfully created user:", user.email);
 
-        const userRef = doc(db, "users", user.uid);
-        // Save the user's display name in Firestore
+        const userRef = doc(db, 'users', user.uid);
+
+        const createdAt = new Date();
+
         await setDoc(userRef, {
             displayName,
-        }, { merge: true });
-        console.log("Saved user's display name in Firestore:", displayName);
-
-        const { user: signedInUser } = await signInWithEmailAndPassword(auth, email, password);
-        console.log("Successfully signed in user:", signedInUser.email);
+            email,
+            createdAt,
+        });
+        console.log("Successfully signed in user:", userAuth.email);
     } catch (error) {
         console.error("Error signing in with email and password:", error);
     }
