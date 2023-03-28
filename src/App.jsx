@@ -47,7 +47,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <ToastContainer/>
-        <Layout currentUser={this.state.currentUser}>
+        <Layout>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/shop" element={<ShopPage />} />
