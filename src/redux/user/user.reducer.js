@@ -3,14 +3,11 @@ const INITIAL_STATE = {
 }
 
 const userReducer = ( state = INITIAL_STATE, action ) => {
-    const payload = {
-        currentUser: JSON.stringify(action.payload)
-    }
     switch (action.type) {
         case 'SET_CURRENT_USER':
             return {
                 ...state,
-                ...payload,
+                currentUser: action.payload
             }
         default: 
             return state;
