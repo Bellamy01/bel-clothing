@@ -1,5 +1,5 @@
 import  { initializeApp } from 'firebase/app';
-import { GoogleAuthProvider, getAuth, signInWithRedirect, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { GoogleAuthProvider, getAuth, signInWithRedirect, createUserWithEmailAndPassword } from 'firebase/auth';
 import { addDoc, collection, getFirestore, query, where, getDocs, doc, setDoc } from 'firebase/firestore';
 
 const config = {

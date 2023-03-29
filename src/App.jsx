@@ -1,5 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 import HomePage from './pages/homepage/homepage.component'
 import ShopPage from './pages/shop/shop.component'
@@ -7,35 +12,26 @@ import './App.css';
 import Layout from './pages/layout/layout.component';
 import SignInPage from './pages/sign-in/sign-in-page.component';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import { setCurrentUser } from './redux/user/user.action';
 import SignUpPage from './pages/sign-up/sign-up-page.component';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 class App extends React.Component {
-  constructor(){
-    super();
-
-    this.state = {
-      currentUser: null
-    }
-  }
-
   unsubscribeFromAuth = null;
 
   componentDidMount(){
+    const { setCurrentUser } = this.props;
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth =>  {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
         userRef.forEach(doc => {
-          this.setState({
-            currentUser: {
-              id: doc.id,
-              ...doc.data()
-          }});
+          setCurrentUser({
+            id: doc.id,
+            ...doc.data()
+          });
         });
-      } else {
-        this.setState({currentUser: userAuth})
       }
+      setCurrentUser(userAuth);
     });
   }
 
@@ -60,4 +56,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+})
+
+export default connect(null,mapDispatchToProps)(App);
