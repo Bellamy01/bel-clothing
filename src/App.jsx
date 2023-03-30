@@ -54,7 +54,7 @@ class App extends React.Component {
             />
             <Route 
               path='/signup' 
-              element={currentUser ? <Navigate to="/" /> : <SignUpPage />} 
+              element={ currentUser ? <Navigate to="/" /> : <SignUpPage />} 
             />
           </Routes>
           </Layout>
