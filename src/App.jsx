@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { ToastContainer } from 'react-toastify';
@@ -40,6 +40,7 @@ class App extends React.Component {
   }
 
   render() {
+    const { currentUser } = this.props;
     return (
       <BrowserRouter>
         <ToastContainer/>
@@ -47,8 +48,14 @@ class App extends React.Component {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/shop" element={<ShopPage />} />
-            <Route path='/signin' element={<SignInPage/>} />
-            <Route path='/signup' element={<SignUpPage />} />
+            <Route
+              path="/signin"
+              element={ currentUser ? <Navigate to="/" /> : <SignInPage />}
+            />
+            <Route 
+              path='/signup' 
+              element={currentUser ? <Navigate to="/" /> : <SignUpPage />} 
+            />
           </Routes>
           </Layout>
       </BrowserRouter>
@@ -56,8 +63,12 @@ class App extends React.Component {
   }
 }
 
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser
+})
+
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 })
 
-export default connect(null,mapDispatchToProps)(App);
+export default connect(mapStateToProps,mapDispatchToProps)(App);
