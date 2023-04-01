@@ -24,6 +24,7 @@
     "react-toastify": "^9.1.1",
     "redux": "^4.2.1",
     "redux-logger": "^3.0.6",
+    "reselect": "^4.1.7",
     "sass": "^1.54.8",
     "scss-tokenizer": "^0.4.3"
   },
