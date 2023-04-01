@@ -16,6 +16,7 @@ import { setCurrentUser } from './redux/user/user.action';
 import SignUpPage from './pages/sign-up/sign-up-page.component';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/user.selector';
+import CheckoutPage from './pages/checkout/checkout.component';
 
 
 class App extends React.Component {
@@ -48,16 +49,17 @@ class App extends React.Component {
         <ToastContainer/>
         <Layout>
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route exact path="/" element={<HomePage />} />
             <Route path="/shop" element={<ShopPage />} />
             <Route
-              path="/signin"
+              exact path="/signin"
               element={ currentUser ? <Navigate to="/" /> : <SignInPage />}
             />
             <Route 
-              path='/signup' 
+              exact path='/signup' 
               element={ currentUser ? <Navigate to="/" /> : <SignUpPage />} 
             />
+            <Route exact path='/checkout' element={<CheckoutPage/>} />
           </Routes>
           </Layout>
       </BrowserRouter>
