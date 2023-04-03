@@ -27,8 +27,11 @@
         .arrow {
             cursor: pointer;
         }
+        .left {
+            transform: rotate(180deg);
+        }
         .value {
-            margin: 0 10px;
+            margin: 0 10px 1px;
         }
     }
 
