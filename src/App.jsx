@@ -17,6 +17,8 @@ import SignUpPage from './pages/sign-up/sign-up-page.component';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/user.selector';
 import CheckoutPage from './pages/checkout/checkout.component';
+import CategoryPage from './pages/category/category.component';
+import CollectionsOverview from './components/collections-overview/collections-overview.component';
 
 
 class App extends React.Component {
@@ -49,8 +51,10 @@ class App extends React.Component {
         <ToastContainer/>
         <Layout>
           <Routes>
-            <Route exact path="/" element={<HomePage />} />
-            <Route path="/shop" element={<ShopPage />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="shop" element={<CollectionsOverview/>}>
+              <Route index   path=':categoryId' element={<CategoryPage />} />
+            </Route>
             <Route
               exact path="/signin"
               element={ currentUser ? <Navigate to="/" /> : <SignInPage />}
