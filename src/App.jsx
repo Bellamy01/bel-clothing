@@ -52,8 +52,9 @@ class App extends React.Component {
         <Layout>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="shop" element={<CollectionsOverview/>}>
-              <Route index   path=':categoryId' element={<CategoryPage />} />
+            <Route path="shop" element={<ShopPage/>}>
+              <Route index element={<CollectionsOverview/>} />
+              <Route path=':categoryId' element={<CategoryPage />} />
             </Route>
             <Route
               exact path="/signin"
