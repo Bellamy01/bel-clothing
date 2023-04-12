@@ -6,16 +6,15 @@ import "./layout.styles.scss";
 
 const Layout = ({ children }) => {
     return (
-        <>
+        <div className="layout">
             <header>
                 <Header/>
             </header>
-            <div>{children}</div>
-            <footer className="foot">
-                <hr/>
+            <main>{children}</main>
+            <footer>
                 <Footer/>
             </footer>
-        </>
+        </div>
     )
 }
 

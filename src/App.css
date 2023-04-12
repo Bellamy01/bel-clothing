@@ -13,6 +13,8 @@ a {
 *{
     box-sizing: border-box;
     overflow-y: scroll hidden;
+    margin: 0;
+    padding: 0;
 }
 
 ::-webkit-scrollbar {

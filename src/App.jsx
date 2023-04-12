@@ -17,7 +17,7 @@ import SignUpPage from './pages/sign-up/sign-up-page.component';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/user.selector';
 import CheckoutPage from './pages/checkout/checkout.component';
-import CategoryPage from './pages/category/category.component';
+import CollectionPage from './pages/collection/collection.component';
 import CollectionsOverview from './components/collections-overview/collections-overview.component';
 
 
@@ -54,7 +54,7 @@ class App extends React.Component {
             <Route path="/" element={<HomePage />} />
             <Route path="shop" element={<ShopPage/>}>
               <Route index element={<CollectionsOverview/>} />
-              <Route path=':categoryId' element={<CategoryPage />} />
+              <Route path=':collectionId' element={<CollectionPage />} />
             </Route>
             <Route
               exact path="/signin"

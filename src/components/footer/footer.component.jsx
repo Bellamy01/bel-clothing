@@ -5,8 +5,11 @@ import "./footer.styles.scss";
 
 const Footer = () => (
     <div className="footer">
-        <span>Copyright &copy; {new Date().getFullYear()} Bel Inc. All rights reserved.</span>
-        <span>Rwanda</span>
+        <hr/>
+        <div className="footer-content">
+            <span>Copyright &copy; {new Date().getFullYear()} Bel Inc. All rights reserved.</span>
+            <span>Rwanda</span>
+        </div>
     </div>
 )
 

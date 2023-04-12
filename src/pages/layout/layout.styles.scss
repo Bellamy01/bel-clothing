@@ -1,3 +1,17 @@
-.foot{
-    margin-top: 30px;
+footer {
+    align-content: end;
+    flex-grow: 1;
+}
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+}
+
+main {
+    flex-grow: 4;
+}
+
+header {
+    flex-grow: 2;
 }
