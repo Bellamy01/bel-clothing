@@ -20,7 +20,6 @@ import CheckoutPage from './pages/checkout/checkout.component';
 import CollectionPage from './pages/collection/collection.component';
 import CollectionsOverview from './components/collections-overview/collections-overview.component';
 
-
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
