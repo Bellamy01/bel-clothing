@@ -1,10 +1,10 @@
 .checkout-page {
     width: 55%;
-    height: 70vh;
+    height: 62vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 50px auto 0;
+    margin: 0px auto 0;
 
     .checkout-items {
         width:100%;
@@ -32,5 +32,16 @@
         margin-top: 30px;
         margin-left: auto;
         font-size: 36px;
+    }
+    .stripe {
+        margin-top: 15px;
+        margin-left: auto;
+    }
+    .test-warning {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 15px;
+        color: red;
+        
     }
 }
