@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import CollectionItem from '../../components/collection-item/collection-item.component';
 import "./collection.styles.scss"
-import { selectCollection } from "../../redux/shop/shop.selector";
+import { selectParamCollection } from "../../redux/shop/shop.selector";
 
 
 const CollectionPage = ({ collection }) => {
@@ -29,7 +29,7 @@ const CollectionPage = ({ collection }) => {
 const mapStateToProps = (state) => {
     const { cId }  = useParams();
     return {
-        collection: selectCollection(cId)(state)
+        collection: selectParamCollection(cId)(state)
     }
 }
 
