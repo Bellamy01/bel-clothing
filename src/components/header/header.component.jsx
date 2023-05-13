@@ -10,8 +10,6 @@ import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropDown from '../cart-dropdown/cart-dropdown.component';
 import Logo from '../../assets/crown.svg';
 import { OptionsContainer, OptionsLink, HeaderContainer, LogoContainer } from './header.styles';
-import './header.styles.scss';
-
 
 const Header = ({ currentUser, hidden }) => (
     <HeaderContainer>
