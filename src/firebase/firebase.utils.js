@@ -59,6 +59,12 @@ export const signInWithEmail = async (auth, email, password, displayName) => {
         console.error("Error signing in with email and password:", error);
     }
 };
+
+export const addCollectionAndDocuments = ( collectionKey, objectsToAdd ) => {
+    const collectionRef = collection(db, collectionKey);
+    console.log(collectionRef);
+}
+
 //preferred language
 export const auth = getAuth();
 auth.languageCode = 'it';
