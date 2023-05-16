@@ -8,7 +8,10 @@ import './sign-in.styles.scss';
 import { Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-class SignIn extends React.Component{
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+class SignIn extends React.Component {
     constructor(props){
         super(props);
 
@@ -23,7 +26,24 @@ class SignIn extends React.Component{
 
         const { email, password } = this.state;
         try {
-            await signInWithEmailAndPassword(auth, email, password);
+            toast.promise(
+                signInWithEmailAndPassword(auth, email, password),
+                {
+                    pending: 'Logging in',
+                    success: 'Login success',
+                    error: 'Login error'
+                },
+                {
+                    position: "bottom-left",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark"
+                }
+            )
             this.setState({ email: '', password: '' })
         }
         catch (e) {
