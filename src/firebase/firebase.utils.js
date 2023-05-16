@@ -1,6 +1,6 @@
 import  { initializeApp } from 'firebase/app';
 import { GoogleAuthProvider, getAuth, signInWithRedirect, createUserWithEmailAndPassword } from 'firebase/auth';
-import { addDoc, collection, getFirestore, query, where, getDocs, doc, setDoc } from 'firebase/firestore';
+import { addDoc, collection, getFirestore, query, where, getDocs, doc, setDoc, writeBatch } from 'firebase/firestore';
 
 const config = {
     apiKey: "AIzaSyCkv07LhofqMv3inSjlzl8PLBBe5xh8cAk",
@@ -60,9 +60,16 @@ export const signInWithEmail = async (auth, email, password, displayName) => {
     }
 };
 
-export const addCollectionAndDocuments = ( collectionKey, objectsToAdd ) => {
+export const addCollectionAndDocuments = async ( collectionKey, objectsToAdd ) => {
     const collectionRef = collection(db, collectionKey);
-    console.log(collectionRef);
+
+    const batch = writeBatch(db);
+    objectsToAdd.forEach( obj => {
+        const newDocRef = doc(collectionRef);
+        batch.set(newDocRef, obj);
+    });
+
+    return await batch.commit();
 }
 
 //preferred language
