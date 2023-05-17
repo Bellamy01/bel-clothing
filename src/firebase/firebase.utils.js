@@ -15,14 +15,14 @@ const config = {
 const app = initializeApp(config);
 
 //initialize firestore 
-const db = getFirestore(app);
+export const db = getFirestore(app);
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
     if(!userAuth) return;
     const userRef = collection(db, "users");
     const userQuery = query(userRef,where("email","==",userAuth.email));
     const snapShot = await getDocs(userQuery);
-
+ a
         if (snapShot.empty) {
             const createdAt = new Date();
             const { displayName, email } = userAuth;
@@ -58,6 +58,21 @@ export const signInWithEmail = async (auth, email, password, displayName) => {
     } catch (error) {
         console.error("Error signing in with email and password:", error);
     }
+};
+
+export const convertCollectionSnapshotToMap = (collections) => {
+    const transformedCollection = collections.docs.map(doc => {
+        const { title, items } = doc.data();
+
+        return {
+            routeName: encodeURI(title.toLowerCase()),
+            id: doc.id,
+            title,
+            items
+        }
+    });
+
+    console.log(transformedCollection);
 };
 
 export const addCollectionAndDocuments = async ( collectionKey, objectsToAdd ) => {
