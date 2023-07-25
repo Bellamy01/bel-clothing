@@ -60,9 +60,9 @@ export const signInWithEmail = async (auth, email, password, displayName) => {
     }
 };
 
-export const convertCollectionSnapshotToMap = (collections) => {
-    const transformedCollection = collections.docs.map(doc => {
-        const { title, items } = doc.data();
+export const convertCollectionSnapshotToMap = (collectionsSnapShot) => {
+    const transformedCollection = collectionsSnapShot.docs.map(docSnapshot => {
+        const { title, items } = docSnapshot.data();
 
         return {
             routeName: encodeURI(title.toLowerCase()),
@@ -71,7 +71,6 @@ export const convertCollectionSnapshotToMap = (collections) => {
             items
         }
     });
-
     console.log(transformedCollection);
 };
 
